@@ -11,7 +11,7 @@ configuration = deepsecurity.Configuration()
 configuration.host = 'https://cloudone.trendmicro.com/api'
 
 # Authentication
-configuration.api_key['api-secret-key'] = 'AEDF4656-5504-3120-693B-F00191B3DAB6:A06810C6-1C9E-C6AC-5DCB-46A2F012FC10:DCcohjrbPMPJV/PQwOCIklu2IQ7Kt858MWWwdw3AbRM='
+configuration.api_key['api-secret-key'] = ''
 # Initialization
 # Set Any Required Values
 api_instance = deepsecurity.ComputersApi(deepsecurity.ApiClient(configuration))
