@@ -3,6 +3,9 @@ import sys, warnings
 import deepsecurity
 from deepsecurity.rest import ApiException
 from pprint import pprint
+import csv
+import requests
+
 
 # Setup
 if not sys.warnoptions:
@@ -27,3 +30,12 @@ try:
 except ApiException as e:
 	print("An exception occurred when calling ComputersApi.list_computers: %s\n" % e)
 
+# Write to csv file
+
+r = requests.get('https://cloudone.trendmicro.com/api')
+
+
+with open('output.csv', 'w+') as f:
+	f.write(str(api_response))
+
+f.close()
