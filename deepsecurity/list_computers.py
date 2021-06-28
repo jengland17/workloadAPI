@@ -7,6 +7,7 @@ import csv
 import requests
 
 
+
 # Setup
 if not sys.warnoptions:
 	warnings.simplefilter("ignore")
@@ -30,12 +31,31 @@ try:
 except ApiException as e:
 	print("An exception occurred when calling ComputersApi.list_computers: %s\n" % e)
 
+
+
 # Write to csv file
 
-r = requests.get('https://cloudone.trendmicro.com/api')
+	
+outputFile = open("output.csv", "w")
+
+count = 0
+
+reader = csv.writer(outputFile, delimiter=',')
+reader.writerow(['COMPUTER NAME', 'PLATFORM', 'POLICY NAME', 'STATUS'])
+
+api_response = str(api_response).split('\n')
+api_response.pop(0)
+
+for i in api_response:
+	print('here is i', i)
+	outputFile.writelines(i)
+	count += 1
+
+	if (count == 4):
+		outputFile.write('\n')
+		count = 0
+	
 
 
-with open('output.csv', 'w+') as f:
-	f.write(str(api_response))
 
-f.close()
+
